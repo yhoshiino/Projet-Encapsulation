@@ -5,6 +5,10 @@ Player::Player(const Texture& texture, const Vector2f& startPosition, float init
     sprite.setPosition(position);
 }
 
+Player::~Player() {
+
+}
+
 void Player::handleInput() {
 
     if (sf::Keyboard::isKeyPressed(Keyboard::Z) && position.y > -25) {

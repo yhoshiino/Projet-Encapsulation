@@ -13,9 +13,13 @@ private:
     float speed; // Vitesse de déplacement
 
 public:
+    Player()
+        : position(0.f, 0.f), velocity(0.f, 0.f), speed(0.f), Entity() {
+        // Ce constructeur initialise les valeurs par défaut
+    }
     Player(const Texture& texture, const Vector2f& startPosition, float initialSpeed);
 
-
+    ~Player();
     void update(float deltaTime) override;
 
 
