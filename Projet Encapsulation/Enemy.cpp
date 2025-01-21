@@ -11,7 +11,7 @@ void Enemy::update(float deltaTime) {
     sprite.setPosition(position);
 }
 
-void Enemy::draw(sf::RenderWindow& window) const {
+void Enemy::draw(sf::RenderWindow& window) {
     window.draw(sprite);
 }
 

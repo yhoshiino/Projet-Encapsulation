@@ -28,9 +28,10 @@ void Player::handleInput() {
 void Player::update(float deltaTime) {
     position += velocity * deltaTime;
     sprite.setPosition(position);
+    handleInput();
 }
 
-void Player::draw(sf::RenderWindow& window) const {
+void Player::draw(RenderWindow& window) {
     window.draw(sprite);
 }
 
@@ -49,4 +50,8 @@ void Player::setPosition(const Vector2f& newPosition) {
 
 void Player::setVelocity(const Vector2f& newVelocity) {
     velocity = newVelocity;
+}
+
+void Player::boost() {
+    speed += 10;
 }

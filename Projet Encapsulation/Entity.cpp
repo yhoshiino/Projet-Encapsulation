@@ -12,6 +12,6 @@ void Entity::setTexture(const Texture& texture) {
     sprite.setTexture(texture);
 }
 
-void Entity::draw(RenderWindow& window) const {
+void Entity::draw(RenderWindow& window) {
     window.draw(sprite);
 }

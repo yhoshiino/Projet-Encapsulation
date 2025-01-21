@@ -17,7 +17,7 @@ public:
 	void update(float deltaTime) override;
 
 
-	void draw(RenderWindow& window) const override;
+	void draw(RenderWindow& window) override;
 
 	const Vector2f& getVelocity() const;
 	const Vector2f& getPosition() const;

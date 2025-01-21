@@ -1,6 +1,7 @@
 #include "Chaser.h"
 Chaser::Chaser(const Texture& texture, const Vector2f& SpawnPosition, float speed) : Enemy(texture, SpawnPosition, speed) {
     sprite.setPosition(position);
+    
     cout << position.x << endl;
 }
 
@@ -9,10 +10,10 @@ Chaser::~Chaser() {
 }
 
 
-void Chaser::updateDirection(Player& player)
+void Chaser::updateDirection(shared_ptr<Player> player)
 {
     // Récupérer les positions actuelles
-    Vector2f playerPosition = player.getSprite().getPosition();
+    Vector2f playerPosition = player->getSprite().getPosition();
     Vector2f chaserPosition = this->getSprite().getPosition();
 
     // Calculer la direction vers le joueur
@@ -44,7 +45,7 @@ void Chaser::update(float deltaTime)
     this->getSprite().move(coordX, coordY * speed * deltaTime);
 }
 
-void Chaser::draw(sf::RenderWindow& window) const {
+void Chaser::draw(sf::RenderWindow& window){
     window.draw(sprite);
 }
 
@@ -65,11 +66,11 @@ void Chaser::setVelocity(const Vector2f& newVelocity) {
     velocity = newVelocity;
 }
 
-void Chaser::collisions(Player& player) {
-    FloatRect hitboxPlayer = player.getSprite().getGlobalBounds();
+void Chaser::collisions(shared_ptr<Player> player) {
+    FloatRect hitboxPlayer = player->getSprite().getGlobalBounds();
     FloatRect hitboxChaser = this->getSprite().getGlobalBounds();
     if (hitboxChaser.intersects(hitboxPlayer)) {
-        player.~Player();
+        player.~player();
     }
 
 }

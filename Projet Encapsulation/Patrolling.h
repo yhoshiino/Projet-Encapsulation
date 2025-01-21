@@ -2,14 +2,17 @@
 #define PATROLLING_H
 
 #include "Enemy.h"
+#include "Player.h"
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
 class Patrolling : public Enemy {
 private:
-    Vector2f startPosition;  // Point de départ de la patrouille
-    Vector2f endPosition;    // Point de fin de la patrouille
-    bool movingToEnd;        // Indique si l'ennemi se déplace vers la position finale
+private:
+    Vector2f startPosition;  
+    Vector2f endPosition;   
+    Vector2f velocity;      
+    bool movingToEnd;        
 
 public:
     // Constructeur
@@ -17,7 +20,9 @@ public:
 
     // Méthodes
     void update(float deltaTime) override; // Mise à jour de la position et de la direction
-    void draw(RenderWindow& window) const override; // Affichage de l'ennemi
+    void draw(RenderWindow& window) override; // Affichage de l'ennemi
+
+    void collisions(Player& player);
 };
 
 #endif // PATROLLING_H

@@ -13,12 +13,12 @@ public:
 	~Chaser();
 
 
-	void updateDirection(Player& player);
+	void updateDirection(shared_ptr<Player> player);
 
 	void update(float deltaTime) override;
 
 
-	void draw(RenderWindow& window) const override;
+	void draw(RenderWindow& window) override;
 
 	const Vector2f& getVelocity() const;
 	const Vector2f& getPosition() const;
@@ -26,7 +26,7 @@ public:
 	void setPosition(const Vector2f& newPosition);
 	void setVelocity(const Vector2f& newVelocity);
 
-	void collisions(Player& player);
+	void collisions(shared_ptr<Player> player);
 };
 
 

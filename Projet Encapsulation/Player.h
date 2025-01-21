@@ -23,7 +23,7 @@ public:
     void update(float deltaTime) override;
 
 
-    void draw(RenderWindow& window) const override;
+    void draw(RenderWindow& window) override;
 
     const Vector2f& getVelocity() const;
     const Vector2f& getPosition() const;
@@ -32,6 +32,8 @@ public:
     void setVelocity(const Vector2f& newVelocity);
 
     void handleInput();
+
+    void boost();
 };
 
 #endif // PLAYER_H
