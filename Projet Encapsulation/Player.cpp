@@ -12,16 +12,16 @@ Player::~Player() {
 void Player::handleInput() {
 
     if (sf::Keyboard::isKeyPressed(Keyboard::Z) && position.y > -25) {
-        position.y = position.y - speed;
+        position.y = position.y - (float)speed;
     }
     if (sf::Keyboard::isKeyPressed(Keyboard::S) && position.y < 800) {
-        position.y = position.y + speed;
+        position.y = position.y + (float)speed;
     }
     if (sf::Keyboard::isKeyPressed(Keyboard::Q) && position.x > 0) {
-        position.x = position.x - speed;
+        position.x = position.x - (float)speed;
     }
     if (sf::Keyboard::isKeyPressed(Keyboard::D) && position.x < 1240) {
-        position.x = position.x + speed;
+        position.x = position.x + (float)speed;
     }
 }
 
@@ -53,5 +53,13 @@ void Player::setVelocity(const Vector2f& newVelocity) {
 }
 
 void Player::boost() {
-    speed += 10;
+    speed += 25;
+}
+
+void Player::addKey() {
+	keyCount++;
+}
+
+int Player::getKey() {
+	return keyCount;
 }

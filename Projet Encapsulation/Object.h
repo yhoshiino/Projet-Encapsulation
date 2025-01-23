@@ -10,7 +10,9 @@ public:
 
     Object(const Texture& texture);
 
-
+    void update(float deltaTime) override;
+    void draw(RenderWindow& window) override;
+ 
 };
 
 #endif // OBJECT_H

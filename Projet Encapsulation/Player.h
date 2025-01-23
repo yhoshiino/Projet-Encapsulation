@@ -7,11 +7,12 @@
 
 
 class Player : public Entity {
-private:
+protected:
     Vector2f position; // Position actuelle du joueur
     Vector2f velocity; // Vitesse actuelle du joueur
     float speed; // Vitesse de déplacement
-
+    Clock clockSpeed;
+	
 public:
     Player()
         : position(0.f, 0.f), velocity(0.f, 0.f), speed(0.f), Entity() {
@@ -21,6 +22,8 @@ public:
 
     ~Player();
     void update(float deltaTime) override;
+
+    int keyCount = 0;
 
 
     void draw(RenderWindow& window) override;
@@ -34,6 +37,10 @@ public:
     void handleInput();
 
     void boost();
+
+    void addKey();
+
+	int getKey();
 };
 
 #endif // PLAYER_H

@@ -6,12 +6,16 @@ Potion::Potion(const Texture& texture, const Vector2f& spawnPoint)
     sprite.setPosition(position); // Place le sprite à la position de la potion
 }
 
+Potion::~Potion() {
+	cout << "Potion détruite." << std::endl;
+}
+
+
 void Potion::interact(Player& player) {
-    if (player.getSprite().getGlobalBounds().intersects(this->getSprite().getGlobalBounds())) {
-        player.boost();
-        cout << "Le joueur utilise la potion !" << std::endl;
-    }
-    
+
+    player.boost();
+    cout << "Le joueur utilise la potion !" << std::endl;
+ 
 }
 
 

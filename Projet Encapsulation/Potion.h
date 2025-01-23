@@ -3,7 +3,6 @@
 
 #include "Interface.h"
 #include "Object.h"
-#include <SFML/Graphics.hpp>
 using namespace sf;
 
 class Potion : public Object, public Interactable{
@@ -13,7 +12,7 @@ private:
 public:
 
     Potion(const Texture& texture, const Vector2f& spawnPoint);
-
+    ~Potion();
     void interact(Player& player) override;
 
     void update(float deltaTime) override;
