@@ -60,7 +60,10 @@ void EntityManager::createPatrollers(const Texture& texture, const Vector2f& Spa
 }
 
 // Met à jour toutes les entités
-void EntityManager::update(float deltaTime) {
+void EntityManager::update(float deltaTime, vector<string>& map) {
+    for (auto player : Players) {
+        player->handleInput(deltaTime, map);
+    }
     for (auto chaser : Chasers)
     {
         chaser->updateDirection(Players[0]);

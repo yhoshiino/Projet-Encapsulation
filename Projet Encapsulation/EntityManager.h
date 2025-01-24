@@ -3,7 +3,7 @@
 #define ENTITYMANAGER_H
 
 #include <vector>
-
+#include "Map.h"
 #include "Entity.h" // Assurez-vous d'inclure les entités gérées
 #include "Chaser.h"
 #include "Potion.h"
@@ -44,7 +44,7 @@ public:
     void collisions();
 
     // Met à jour toutes les entités
-    void update(float deltaTime);
+    void update(float deltaTime, vector<string>& map);
 
     // Dessine toutes les entités
     void draw(sf::RenderWindow& window);

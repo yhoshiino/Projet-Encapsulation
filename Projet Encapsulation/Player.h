@@ -4,7 +4,7 @@
 #include "Entity.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
-
+#include "Map.h"
 
 class Player : public Entity {
 protected:
@@ -34,7 +34,7 @@ public:
     void setPosition(const Vector2f& newPosition);
     void setVelocity(const Vector2f& newVelocity);
 
-    void handleInput();
+    void handleInput(float deltaTime, vector<string>& map);
 
     void boost();
 

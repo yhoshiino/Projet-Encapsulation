@@ -21,6 +21,7 @@ public:
 	void draw(sf::RenderWindow& window);
 	void loadMap(std::string path);
 
+	vector<string>& getMap();
 };
 
 

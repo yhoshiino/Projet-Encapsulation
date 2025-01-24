@@ -4,14 +4,15 @@
 #include "Map.h"
 using namespace std;
 using namespace sf;
-
+const float tilesize = 16.f;
 EntityManager* manager = EntityManager::getInstance();
 
 int main() {
 	Texture J1;
 	Texture goldenKey;
-	Texture ChaseEnemy;
+	Texture Patroller;
 	Texture Pot;
+	Texture Chaser;
 	Clock clock;
 	float DeltaTime;
 	Font font;
@@ -21,7 +22,11 @@ int main() {
 		cout << "introuvable";
 		return -1;
 	}
-	if (!ChaseEnemy.loadFromFile("Chaser.png")) {
+	if (!Patroller.loadFromFile("Chaser.png")) {
+		cout << "Introuvable";
+		return -1;
+	}
+	if (!Chaser.loadFromFile("Fantome-de-la-Fraude.png")) {
 		cout << "Introuvable";
 		return -1;
 	}
@@ -40,15 +45,18 @@ int main() {
 	RenderWindow window(VideoMode(Width, Height), "Escape the dungeon");
 	Event event;
 	Map map("MAP.txt");
-	/*manager->createChasers(ChaseEnemy, Vector2f(200, 200), 1.5f);*/
-	/*manager->createPatrollers(ChaseEnemy, Vector2f(100, 100), 250.f);*/
 	
+	manager->createChasers(Chaser, Vector2f(200, 200), 1.5f);
+	manager->createPatrollers(Patroller, Vector2f(950, 500), 250.f);
+	manager->createPatrollers(Patroller, Vector2f(0, 350), 250.f);
+	manager->createPatrollers(Patroller, Vector2f(950, 250), 350.f);
+	manager->createPatrollers(Patroller, Vector2f(950, 350), 250.f);
+	manager->createPatrollers(Patroller, Vector2f(950, 600), 250.f);
 	manager->createPotions(Pot, Vector2f(400, 400));
-	manager->createKeys(goldenKey, Vector2f(700, 400));
+	manager->createKeys(goldenKey, Vector2f(83, 265));
 	manager->createPlayers(J1, Vector2f(Width / 2, Height / 2), 5.f);
 
 	Text Keycount("Key count: ", font, 50);
-	Keycount.setString(" X " + to_string(manager->Players[0]->getKey()));
 	while (window.isOpen()) {
 		Keycount.setString(" X " + to_string(manager->Players[0]->getKey()));
 		while (window.pollEvent(event)) {
@@ -58,7 +66,7 @@ int main() {
 		}
 		window.setFramerateLimit(60);
 		DeltaTime = clock.restart().asSeconds();
-		manager->update(DeltaTime);
+		manager->update(DeltaTime, map.getMap());
 		manager->collisions(); 
 		window.clear();
 		map.draw(window);
